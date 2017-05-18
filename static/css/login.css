@@ -1,0 +1,12 @@
+.main {
+  margin-top: 20px;
+}
+
+.profile {
+  margin-top: 24px;
+  width: 240px;
+  height: 240px;
+  border-radius: 120px;
+  -webkit-border-radius: 120px;
+  -moz-border-radius: 120px;
+}

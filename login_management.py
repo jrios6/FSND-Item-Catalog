@@ -116,14 +116,12 @@ def fbconnect():
     user_info_url = 'https://graph.facebook.com/v2.9/%s?fields=name,id,email&access_token=%s' % (fb_id, access_token)
     data = json.loads(h.request(user_info_url, 'GET')[1])
 
-    print data
     if login_session.get('username') is not None and data['id'] == login_session.get('facebook_id'):
         response = make_response(json.dumps("Current user is already connected"), 200)
         response.headers['Content-Type'] = 'application/json'
         return response
 
     # Store access token in session for later user in JSON
-    print data
     login_session['provider'] = 'facebook'
     login_session['username'] = data['name']
     login_session['facebook_id'] = data['id']
@@ -143,16 +141,8 @@ def fbconnect():
     else:
         login_session['user_id'] = createUser(login_session)
 
-    output = ''
-    output += '<h1>Welcome, '
-    output += login_session['username']
-    output += '!</h1>'
-    output += '<img src="'
-    output += login_session['picture']
-    output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
     flash("you are now logged in as %s" % login_session['username'])
-    print "done!"
-    return output
+    return render_template("login_landing.html")
 
 
 @simple_page.route('/gconnect', methods=['POST'])
@@ -232,16 +222,8 @@ def gconnect():
     else:
         login_session['user_id'] = createUser(login_session)
 
-    output = ''
-    output += '<h1>Welcome, '
-    output += login_session['username']
-    output += '!</h1>'
-    output += '<img src="'
-    output += login_session['picture']
-    output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
     flash("you are now logged in as %s" % login_session['username'])
-    print "done!"
-    return output
+    return render_template("login_landing.html")
 
 
 # User Helper Functions
