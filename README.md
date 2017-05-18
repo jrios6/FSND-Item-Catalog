@@ -2,6 +2,8 @@
 
 The goal of this project is to develop an application that provides a list of items within a variety of categories as well as provide a user registration and authentication system. Registered users will have the ability to post, edit and delete their own items.
 
+All Python Code are checked to meet with PEP8 Requirements
+
 ## Requirements
 - [Vagrant](https://www.vagrantup.com/)
 - [VirtualBox](https://www.virtualbox.org/)
@@ -21,8 +23,6 @@ To run this project, you are also required to provide client_secrets.json and fb
 6. Initialize the database with `python catalog_initializer.py`
 7. Start Flask Server with `python project.py`
 8. Navigate to http://localhost:5000
-
-
 
 # API Endpoints
 1. /catalog/JSON - List of catalog categories in JSON

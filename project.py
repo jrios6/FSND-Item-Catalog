@@ -20,6 +20,8 @@ session = DBSession()
 @app.route('/')
 @app.route('/catalog')
 def home():
+    """Shows all categories and latest items."""
+
     categories = session.query(Category).all()
     catalogItems = session.query(CatalogItem).all()
 
@@ -29,6 +31,8 @@ def home():
 
 @app.route('/catalog/<int:category_id>')
 def showCatalog(category_id):
+    """Shows catalog items in category."""
+
     categories = session.query(Category).all()
     catalogItems = session.query(CatalogItem).filter_by(
                     category_id=category_id).all()
@@ -41,6 +45,8 @@ def showCatalog(category_id):
 
 @app.route('/catalog/item/add', methods=['GET', 'POST'])
 def add():
+    """GET renders form for adding item, POST adds a new item to database."""
+
     if 'username' not in login_session:
         return redirect(url_for('simple_page.showLogin'))
 
@@ -66,6 +72,8 @@ def add():
 
 @app.route('/catalog/<int:category_id>/item/<int:item_id>')
 def showItem(category_id, item_id):
+    """Shows item details."""
+
     category = session.query(Category).filter_by(id=category_id).one()
     item = session.query(CatalogItem).filter_by(id=item_id).one()
 
@@ -77,6 +85,8 @@ def showItem(category_id, item_id):
 @app.route('/catalog/<int:category_id>/item/<int:item_id>/edit',
            methods=['GET', 'POST'])
 def editItem(category_id, item_id):
+    """GET renders form for editing item, POST modifies item in database."""
+
     if 'username' not in login_session:
         return redirect(url_for('simple_page.showLogin'))
 
@@ -106,6 +116,8 @@ def editItem(category_id, item_id):
 @app.route('/catalog/<int:category_id>/item/<int:item_id>/delete',
            methods=['GET', 'POST'])
 def deleteItem(category_id, item_id):
+    """GET renders deletion comfirmation page, POST deletes item."""
+
     if 'username' not in login_session:
         return redirect(url_for('simple_page.showLogin'))
 
