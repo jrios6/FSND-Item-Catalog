@@ -1,0 +1,25 @@
+<html>
+  <head>
+     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+     {% block scripts %}
+     {% endblock %}
+  </head>
+  <body>
+    {% if 'username' not in session %}
+      <a href="{{url_for('simple_page.showLogin')}}">Click here to login</a>
+    {% else %}
+      <a href="{{url_for('simple_page.disconnect')}}">Logout</a>
+    {% endif %}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li><strong>{{message}}</strong></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}
+    {% endblock %}
+</html>

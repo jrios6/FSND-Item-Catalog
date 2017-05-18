@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="category-list">
+    <p>
+      Categories
+      </br>
+    </p>
+    {% for i in categories %}
+      <a href="{{url_for('showCatalog', category_id=i.id)}}">{{i.name}}</a>
+    {% endfor %}
+  </div>
+  <div class="latest-list">
+    <p>
+      Latest Items
+      </br>
+    </p>
+    {% if 'username' in session %}
+      <a href="{{url_for('add')}}">Add an item</a>
+      </br></br>
+    {% endif %}
+    {% for i in catalogItems %}
+      <a href="{{url_for('showItem', category_id=i.category_id, item_id=i.id)}}">{{i.name}}</a>
+    {% endfor %}
+  </div>
+{% endblock %}

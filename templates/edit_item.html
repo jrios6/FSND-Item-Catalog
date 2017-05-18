@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="edit-item">
+  <form action='{{url_for('editItem', category_id=item.category_id,
+  item_id=item.id)}}' method='POST'>
+    <label>
+      Name
+    </label>
+    <input type="text" name="name" value="{{item.name}}"/>
+    </br>
+    <label>
+      Category
+    </label>
+    <select name="category_id">
+      {% for i in categories %}
+        {% if i.id == item.category_id %}
+          <option selected="true" value="{{i.id}}">{{i.name}}</option>
+        {% else %}
+          <option value="{{i.id}}">{{i.name}}</option>
+        {% endif %}
+      {% endfor %}
+    </select>
+    </br>
+    <label>
+      Description
+    </label>
+    <textarea name="description" value="{{item.description}}"></textarea>
+    </br></br>
+    <a href="{{ url_for('showItem', category_id=item.category_id,
+    item_id=item.id)}}">
+    Cancel
+    </a>
+    <input type="submit" value="Edit"/>
+  </form>
+</div>
+{% endblock %}

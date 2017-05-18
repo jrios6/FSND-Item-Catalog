@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="add-item">
+  <form action='{{url_for('add')}}' method='POST'>
+    <label>
+      Name
+    </label>
+    <input type="text" name="name" />
+    </br>
+    <label>
+      Category
+    </label>
+    <select name="category_id">
+      {% for i in categories %}
+      <option value="{{i.id}}">{{i.name}}</option>
+      {% endfor %}
+    </select>
+    </br>
+    <label>
+      Description
+    </label>
+    <textarea name="description"></textarea>
+    </br></br>
+    <a href="{{ url_for('home')}}">
+    Cancel
+    </a>
+    <input type="submit" value="Add"/>
+</div>
+{% endblock %}
