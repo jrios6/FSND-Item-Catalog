@@ -1,37 +1,52 @@
 {% extends 'base.html' %}
 
+{% block scripts %}
+  <link href="/static/css/add_item.css" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
-<div class="edit-item">
+<div class="main container-fluid">
   <form action='{{url_for('editItem', category_id=item.category_id,
   item_id=item.id)}}' method='POST'>
-    <label>
-      Name
-    </label>
-    <input class="name" type="text" name="name" value="{{item.name}}"/>
-    <br>
-    <label>
-      Category
-    </label>
-    <select name="category_id">
-      {% for i in categories %}
-        {% if i.id == item.category_id %}
-          <option selected="true" value="{{i.id}}">{{i.name}}</option>
-        {% else %}
-          <option value="{{i.id}}">{{i.name}}</option>
-        {% endif %}
-      {% endfor %}
-    </select>
-    <br>
-    <label>
-      Description
-    </label>
-    <input class="description" name="description" value="{{item.description}}">
-    <br><br>
-    <a href="{{ url_for('showItem', category_id=item.category_id,
+    <table>
+      <tr>
+        <td class="label">
+          Name
+        </td>
+        <td class="content">
+          <input class="name" type="text" name="name" value="{{item.name}}"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="label">
+          Description
+        </td>
+        <td class="content">
+          <input class="description" name="description" value="{{item.description}}">
+        </td>
+      </tr>
+      <tr>
+        <td class="label">
+          Category
+        </td>
+        <td class="content">
+          <select name="category_id">
+            {% for i in categories %}
+              {% if i.id == item.category_id %}
+                <option selected="true" value="{{i.id}}">{{i.name}}</option>
+              {% else %}
+                <option value="{{i.id}}">{{i.name}}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </td>
+      </tr>
+    </table>
+    <a class="btn btn-primary" href="{{ url_for('showItem', category_id=item.category_id,
     item_id=item.id)}}">
     Cancel
     </a>
-    <input type="submit" value="Edit"/>
+    <input class="btn btn-primary" type="submit" value="Edit"/>
   </form>
 </div>
 {% endblock %}

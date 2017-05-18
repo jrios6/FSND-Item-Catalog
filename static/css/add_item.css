@@ -1,0 +1,31 @@
+.main {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+table tr {
+  margin-bottom: 12px;
+}
+
+.label {
+  padding-right: 14px;
+  padding-bottom: 20px;
+}
+
+.content {
+  padding-bottom: 18px;
+}
+
+.name {
+  width: 600px;
+}
+
+.description {
+  width: 600px;
+}
+
+.btn {
+  margin-top: 12px;
+  margin-right: 4px;
+}
