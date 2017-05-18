@@ -38,7 +38,7 @@
         success: function(result) {
           // Handle or verify server response if neccessary
           if (result) {
-            $('#result').html('Login Sucessful! </br>' + result + '</br> Redirecting...')
+            $('#result').html('Login Sucessful! <br>' + result + '<br> Redirecting...')
             setTimeout(function() {
               window.location.href = "/catalog";
             }, 4000);
@@ -91,7 +91,7 @@
        success: function(result) {
          // Handle or verify the server response if necessary.
          if (result) {
-           $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
+           $('#result').html('Login Successful!<br>'+ result + '<br>Redirecting...')
            setTimeout(function() {
              window.location.href = "/catalog";
            }, 4000);

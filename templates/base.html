@@ -1,25 +1,45 @@
 <html>
   <head>
-     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+     <link href="/static/css/base.css" rel="stylesheet"/>
      {% block scripts %}
      {% endblock %}
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Jaldi:400,700" rel="stylesheet">
+     <title>Item Catalog</title>
   </head>
   <body>
-    {% if 'username' not in session %}
-      <a href="{{url_for('simple_page.showLogin')}}">Click here to login</a>
-    {% else %}
-      <a href="{{url_for('simple_page.disconnect')}}">Logout</a>
-    {% endif %}
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul>
-          {% for message in messages %}
-            <li><strong>{{message}}</strong></li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
+    <div class="top container-fluid">
+      <div class="login-area">
+        <p class="login-text">
+          {% if 'username' not in session %}
+            <a href="{{url_for('simple_page.showLogin')}}">login</a>
+          {% else %}
+            <a href="{{url_for('simple_page.disconnect')}}">logout</a>
+          {% endif %}
 
-    {% block content %}
-    {% endblock %}
+        </p>
+      </div>
+      <h1 class="title">
+        <a href="/catalog">
+          Item Catalog
+        </a>
+      </h1>
+    </div>
+    <div class="container-fluid">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flash container-fluid">
+          <ul>
+            {% for message in messages %}
+              <li><strong>{{message}}</strong></li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      {% endwith %}
+      {% block content %}
+      {% endblock %}
+    </div>
+  </body>
 </html>

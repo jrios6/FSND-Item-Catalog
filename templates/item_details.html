@@ -1,26 +1,32 @@
 {% extends "base.html" %}
 
+{% block scripts %}
+  <link href="/static/css/details.css" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
-  <div class="catalog-item">
+  <div class="main container">
     <h1>{{item.name}}</h1>
-    </br>
-    <a href="{{ url_for('showCatalog', category_id=item.category_id)}}">
-    Back
+    <hr/>
+    <a class="back"
+       href="{{ url_for('showCatalog', category_id=item.category_id)}}">
+      Back to {{category.name}}
     </a>
-    <p>{{category.name}}</p>
-    </br>
-    <p>{{item.description}}</p>
-    {% if session.user_id == item.user_id %}
-      </br>
-      <a href='{{url_for('editItem', category_id=item.category_id,
-      item_id=item.id)}}'>
-        Edit
-      </a>
-      </br>
-      <a href='{{url_for('deleteItem', category_id=item.category_id,
-      item_id=item.id)}}'>
-        Delete
-      </a>
-    {% endif %}
+    <div class="catalog-item">
+      <h3>Description</h3>
+      <p>{{item.description}}</p>
+      {% if session.user_id == item.user_id %}
+        <br>
+        <a href='{{url_for('editItem', category_id=item.category_id,
+        item_id=item.id)}}'>
+          Edit
+        </a>
+        <br>
+        <a href='{{url_for('deleteItem', category_id=item.category_id,
+        item_id=item.id)}}'>
+          Delete
+        </a>
+      {% endif %}
+    </div>
   </div>
 {% endblock %}

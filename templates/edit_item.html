@@ -7,8 +7,8 @@
     <label>
       Name
     </label>
-    <input type="text" name="name" value="{{item.name}}"/>
-    </br>
+    <input class="name" type="text" name="name" value="{{item.name}}"/>
+    <br>
     <label>
       Category
     </label>
@@ -21,12 +21,12 @@
         {% endif %}
       {% endfor %}
     </select>
-    </br>
+    <br>
     <label>
       Description
     </label>
-    <textarea name="description" value="{{item.description}}"></textarea>
-    </br></br>
+    <input class="description" name="description" value="{{item.description}}">
+    <br><br>
     <a href="{{ url_for('showItem', category_id=item.category_id,
     item_id=item.id)}}">
     Cancel

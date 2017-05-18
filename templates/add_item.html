@@ -7,7 +7,7 @@
       Name
     </label>
     <input type="text" name="name" />
-    </br>
+    <br>
     <label>
       Category
     </label>
@@ -16,15 +16,16 @@
       <option value="{{i.id}}">{{i.name}}</option>
       {% endfor %}
     </select>
-    </br>
+    <br>
     <label>
       Description
     </label>
     <textarea name="description"></textarea>
-    </br></br>
+    <br><br>
     <a href="{{ url_for('home')}}">
     Cancel
     </a>
     <input type="submit" value="Add"/>
+  </form>
 </div>
 {% endblock %}
